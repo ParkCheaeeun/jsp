@@ -11,7 +11,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
+	<!-- 파라미터를 받는다.
+		input tag의 name속성이 파라미터 이름
+		userId, password
+		String userId = request.getParameter("userId");
+		String password = request.getParameter("password");
+	 -->
+	<%	
+		//parameter 관련 메소드를 호출하기 전에 setCharacterEncoding 호출해야함
+		request.setCharacterEncoding("utf-8");
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
 	%>

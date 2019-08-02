@@ -5,9 +5,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//라디오 버튼 클릭이벤트 등록
+	$('#get, #post').on('click', function(){
+		//클릭한 라디오 버튼이 get이면 .form태그 method 속성 get 변경
+		var method = $(this).val();
+		$('form').attr('method', method);
+	})
+})
+</script>
 </head>
 <body>
-	<h2>get login</h2>
 	<!-- 서버로 요청을 보낼 때
 		1. form 태그 작성
 			- action : 요청 보낼 주소(jsp)
@@ -24,20 +34,16 @@
 			- value 속성이 파라미터 값
 	 -->
 	
-	<form action="/jsp/getLoginProcess.jsp" method="get">
+	<h2>get / post login</h2>
+	get : <input type="radio" id="get" name="method" value="get" checked/>
+	post : <input type="radio" id="post" name="method" value="post"/>
+	
+	<form action="/jsp/loginProcess.jsp" method="get">
 		user id : <input type="text" name="userId" value="brown"/><br>
 		user id : <input type="text" name="userId" value="cony"/><br>
 		password id : <input type="password" name="password" value="brown1234"/><br>
 		<input type="submit" value="로그인"/>
 	</form>
 	
-	
-	<h2>post login</h2>
-	<form action="/jsp/getLoginProcess.jsp" method="post">
-		user id : <input type="text" name="userId" value="brown"/><br>
-		user id : <input type="text" name="userId" value="cony"/><br>
-		password id : <input type="password" name="password" value="brown1234"/><br>
-		<input type="submit" value="로그인"/>
-	</form>
 </body>
 </html>
