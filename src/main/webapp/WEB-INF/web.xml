@@ -45,4 +45,19 @@
     <servlet-name>LoginController</servlet-name>
     <url-pattern>/LoginController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>userListController</display-name>
+    <servlet-name>userListController</servlet-name>
+    <servlet-class>kr.or.ddit.user.web.userListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>userListController</servlet-name>
+    <url-pattern>/userListController</url-pattern>
+  </servlet-mapping>
+  <context-param> 
+  	<param-name>contextConfigLocation</param-name> 
+  	<param-value>classpath*:config/spring/context-*.xml</param-value>
+  </context-param>
+
 </web-app>

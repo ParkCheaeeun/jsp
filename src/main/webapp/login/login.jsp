@@ -52,7 +52,7 @@
         %>
         
         <input type="text" id="userId" name="userId" class="form-control" 
-        	   placeholder="Email address" required autofocus value="<%=userId%>">
+        	   placeholder="Email address" required autofocus value="brown">
         <label for="pass" class="sr-only">Password</label>
         <input type="password" id="pass" name="pass" value="brown1234"
         	   class="form-control" placeholder="Password" required>

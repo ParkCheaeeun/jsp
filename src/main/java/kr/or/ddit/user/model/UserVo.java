@@ -1,7 +1,7 @@
 package kr.or.ddit.user.model;
 
 public class UserVo {
-	private String userName;
+	private String userNm;
 	private String userId;
 	private String pass;
 	
@@ -25,21 +25,21 @@ public class UserVo {
 		this.pass = pass;
 	}
 
-	public UserVo(String userName) {
-		this.userName = userName;
+	public UserVo(String userNm) {
+		this.userNm = userNm;
 	}
 
 	public String getUserName() {
-		return userName;
+		return userNm;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserName(String userNm) {
+		this.userNm = userNm;
 	}
 
 	@Override
 	public String toString() {
-		return "UserVo [userName=" + userName + ", userId=" + userId + ", pass=" + pass + "]";
+		return "UserVo [userName=" + userNm + ", userId=" + userId + ", pass=" + pass + "]";
 	}
 
 }
