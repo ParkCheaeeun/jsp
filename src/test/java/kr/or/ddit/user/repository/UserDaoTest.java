@@ -40,10 +40,10 @@ public class UserDaoTest {
 		/***Given***/
 		String userId = "brown";
 		IUserDao userDao = new UserDao();
-
+		
 		/***When***/
 		UserVo userVo = userDao.getUser(userId);
-
+		
 		/***Then***/
 		assertEquals("브라운", userVo.getUserName());
 		assertEquals("brown1234", userVo.getPass());
