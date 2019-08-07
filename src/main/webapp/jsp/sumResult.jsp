@@ -8,14 +8,15 @@
 </head>
 <body>
 	<% 
-		int num1 = Integer.parseInt(request.getParameter("number1"));
-		int num2 = Integer.parseInt(request.getParameter("number2"));
-		int res = 0;
+// 		int num1 = Integer.parseInt(request.getParameter("number1"));
+// 		int num2 = Integer.parseInt(request.getParameter("number2"));
+// 		int res = 0;
 		
-		for(int i=num1; i<=num2; i++){
-			res +=i;
-		}
+// 		for(int i=num1; i<=num2; i++){
+// 			res +=i;
+// 		}
+
 	%>
-	<h3>result : <%= res %></h3>
+	<h3>result : <%=  session.getAttribute("sumResult") %></h3>
 </body>
 </html>

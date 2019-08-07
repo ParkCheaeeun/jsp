@@ -3,6 +3,7 @@ package kr.or.ddit.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -43,10 +44,10 @@ public class HelloServlet  extends HttpServlet {
 		pw.write("	</body>");
 		pw.write("</html>");
 	}
-
+	
 	@Override
-	public void init() throws ServletException {
-		logger.debug("HelloServlet init()");
+	public void init(ServletConfig config) throws ServletException {
+		logger.debug("HelloServlet init() : {}", config.getInitParameter("test"));
 	}
 	
 }

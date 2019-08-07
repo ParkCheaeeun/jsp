@@ -16,7 +16,7 @@ import kr.or.ddit.user.model.UserVo;
 /**
  * Servlet implementation class LoginController
  */
-@WebServlet("/login")
+@WebServlet(urlPatterns = {"/login"}, loadOnStartup = 5)
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
