@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import kr.or.ddit.user.model.UserVo;
+import kr.or.ddit.user.model.User;
 import kr.or.ddit.user.repository.UserDao;
 
 /**
@@ -31,7 +31,7 @@ public class userListController extends HttpServlet {
 		 */
 		
 		UserDao userDao = new UserDao();
-		List<UserVo> userList = userDao.getUserList();
+		List<User> userList = userDao.getUserList();
 		
 		request.setAttribute("userList", userList);
 		
