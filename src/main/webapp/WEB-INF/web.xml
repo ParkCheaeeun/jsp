@@ -36,10 +36,10 @@
     <servlet-name>helloWorld</servlet-name>
     <servlet-class>kr.or.ddit.servlet.HelloServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
-<!--     <init-param> -->
-<!--     	<param-name>test</param-name> -->
-<!--     	<param-value>sally</param-value> -->
-<!--     </init-param> -->
+<!-- <init-param> -->
+<!-- 	<param-name>test</param-name> -->
+<!--  	<param-value>sally</param-value> -->
+<!-- </init-param> -->
   </servlet>
   <servlet-mapping>
     <servlet-name>helloWorld</servlet-name>

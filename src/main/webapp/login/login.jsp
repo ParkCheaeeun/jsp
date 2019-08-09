@@ -19,15 +19,64 @@
 
     <!-- Custom styles for this template -->
     <link href="<%=request.getContextPath()%>/css/signin.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	<script src="<%=request.getContextPath()%>/js/jquery-3.4.1.min.js"></script>
+    
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	var userId = getCookie("userId");
+    	if(userId != undefined){
+    		$("#userId").val(userId);
+			$("#rememberMe").prop("checked", true);    		
+    	}
+    	
+    	//signin btn 클릭 이벤트 핸들러
+    	$('#signinBtn').on('click', function(){
+    		console.log("signinBtn Click");
+    		
+    		//remember me check 되어 있는가
+    		//체크되어있으면
+    		// userId 쿠키를 생성하고 값은 userID input의 값을 쿠키 값으로 설정
+    		//체크 안되어있으면
+    		// 기존에 사용자가 아이디를 쿠키에 저장하는 기능을 사용하다가 더이상 안하는 경우
+    		// 처음부터 아이디 쿠키 저장 기능 사용 안함
+    		// ==> userId 쿠키를 삭제
+    		if($('#rememberMe').prop('checked')){
+    			setCookie('userId', $('#userId').val(), 30);
+    		}else{
+    			deleteCookie("userId");
+    		}
+    		
+    		$('#frm').submit();
+    	});
+    	
+    })
+    	function getCookie(cookieId){
+    		var cookies = document.cookie.split('; ');
+    		
+    		for(var i=0; i<cookies.length; i++){
+    			var cookie = cookies[i];
+    			var cookieNmVal = cookie.split("=");
+    			
+    			if(cookieId == cookieNmVal[0]){
+    				return cookieNmVal[1];
+    			}
+    		}
+    		return "";
+    	}
+    	
+    	function setCookie(cookieNm, cookieValue, expires){
+    		var dt = new Date();
+    		dt.setDate(dt.getDate() + Number(expires));
+    		
+    		document.cookie = cookieNm + "=" + cookieValue + "; path=/; expires="
+    						  + dt.toGMTString();
+    	}
+    	
+    	function deleteCookie(cookieName){
+    		setCookie(cookieName, "", -1);
+    	}
+    	
+    </script>
   </head>
 
   <body>
@@ -41,7 +90,7 @@
     %>
 		사용자 이름 : <%= userName %>
 	
-      <form class="form-signin" action="<%= request.getContextPath()%>/login" method="post">
+      <form id="frm" class="form-signin" action="<%= request.getContextPath()%>/login" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="userId" class="sr-only">User Id</label>
         
@@ -52,16 +101,16 @@
         %>
         
         <input type="text" id="userId" name="userId" class="form-control" 
-        	   placeholder="Email address" required autofocus value="brown">
+        	   placeholder="Email address" required autofocus value="">
         <label for="pass" class="sr-only">Password</label>
         <input type="password" id="pass" name="pass" value="brown1234"
         	   class="form-control" placeholder="Password" required>
         <div class="checkbox">
           <label>
-            <input type="checkbox" value="remember-me"> Remember me
+            <input type="checkbox" value="remember-me" id="rememberMe"> Remember me
           </label>
         </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" id="signinBtn">Sign in</button>
       </form>
 	
     </div> <!-- /container -->
