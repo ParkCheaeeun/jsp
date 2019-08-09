@@ -20,13 +20,15 @@
     <!-- Custom styles for this template -->
     <link href="<%=request.getContextPath()%>/css/signin.css" rel="stylesheet">
 	<script src="<%=request.getContextPath()%>/js/jquery-3.4.1.min.js"></script>
+	<script src="<%=request.getContextPath()%>/js/js.cookie.js"></script>
     
     <script type="text/javascript">
     $(document).ready(function(){
-    	var userId = getCookie("userId");
+    	
+    	var userId = Cookies.get("userId");
     	if(userId != undefined){
     		$("#userId").val(userId);
-			$("#rememberMe").prop("checked", true);    		
+			$("#rememberMe").prop("checked", true);
     	}
     	
     	//signin btn 클릭 이벤트 핸들러
@@ -41,9 +43,9 @@
     		// 처음부터 아이디 쿠키 저장 기능 사용 안함
     		// ==> userId 쿠키를 삭제
     		if($('#rememberMe').prop('checked')){
-    			setCookie('userId', $('#userId').val(), 30);
+    			Cookies.set("userId", $('#userId').val(), {expires : 30});
     		}else{
-    			deleteCookie("userId");
+    			Cookies.remove("userId");
     		}
     		
     		$('#frm').submit();
