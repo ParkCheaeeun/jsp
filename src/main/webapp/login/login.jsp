@@ -29,11 +29,12 @@
     	if(userId != undefined){
     		$("#userId").val(userId);
 			$("#rememberMe").prop("checked", true);
+			$('#pass').focus();
     	}
     	
     	//signin btn 클릭 이벤트 핸들러
     	$('#signinBtn').on('click', function(){
-    		console.log("signinBtn Click");
+    		/* console.log("signinBtn Click");
     		
     		//remember me check 되어 있는가
     		//체크되어있으면
@@ -48,7 +49,7 @@
     			Cookies.remove("userId");
     		}
     		
-    		$('#frm').submit();
+    		$('#frm').submit(); */
     	});
     	
     })
@@ -109,7 +110,7 @@
         	   class="form-control" placeholder="Password" required>
         <div class="checkbox">
           <label>
-            <input type="checkbox" value="remember-me" id="rememberMe"> Remember me
+            <input type="checkbox" name="rememberMe" value="remember-me" id="rememberMe"> Remember me
           </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" id="signinBtn">Sign in</button>
