@@ -83,7 +83,6 @@ public class LoginController extends HttpServlet {
 		logger.debug("password : {}", pass);
 		
 		//사용자가 입력한 계정 정보와 db에 있는 값과 비교
-		IUserDao userDao = new UserDao();
 		User user = userDao.getUser(userId);
 		
 		
