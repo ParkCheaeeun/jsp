@@ -1,14 +1,45 @@
 package kr.or.ddit.user.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class User {
 	private String userNm;
 	private String userId;
 	private String pass;
+	private String alias;
+	private Date reg_dt;
+	
+	private static final Logger logger = LoggerFactory.getLogger(User.class);
 	
 	public User() {
 		
 	}
 	
+	public String getReg_dt() {
+		logger.debug("getReg_dt_fmt method call");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		String date = sdf.format(reg_dt);
+		return date;
+	}
+
+	public void setReg_dt(Date reg_dt) {
+		
+		this.reg_dt = reg_dt;
+	}
+
+
+	public String getAlias() {
+		return alias;
+	}
+
+	public void setAlias(String alias) {
+		this.alias = alias;
+	}
+
 	public String getUserId() {
 		return userId;
 	}

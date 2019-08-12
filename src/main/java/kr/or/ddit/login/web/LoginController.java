@@ -98,8 +98,10 @@ public class LoginController extends HttpServlet {
 			logger.debug("session.getId() : {}" + session.getId());
 			
 			session.setAttribute("S_USERVO", user);
+			request.setAttribute("elTest", "elTestValue");
 			
 			request.getRequestDispatcher("/main.jsp").forward(request, response);
+			
 			
 		}else {
 			//foward의 경우 request, response 객체를 공유
