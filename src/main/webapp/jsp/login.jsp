@@ -38,7 +38,7 @@ $(document).ready(function(){
 	get : <input type="radio" id="get" name="method" value="get" checked/>
 	post : <input type="radio" id="post" name="method" value="post"/>
 	
-	<form action="<%=request.getContextPath() %>" method="get">
+	<form action="${pageContext.request.contextPath}" method="get">
 		user id : <input type="text" name="userId" value="brown"/><br>
 		user id : <input type="text" name="userId" value="cony"/><br>
 		password id : <input type="password" name="password" value="brown1234"/><br>

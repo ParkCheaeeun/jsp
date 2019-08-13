@@ -20,7 +20,7 @@
 	request.getProtocol() 요청 프로토콜 <%= request.getProtocol() %><br>
 	request.getMethod() 요청메소드 <%= request.getMethod() %> <br>
 	request.getRequestURI() 요청 URI <%= request.getRequestURI() %><br>
-	request.getContextPath() context path : <%= request.getContextPath() %> <br>
+	request.getContextPath() context path : ${pageContext.request.contextPath} <br>
     request.getServerName() 서버이름 : <%= request.getServerName() %> <br>
     request.getServerPort() 서버포트 : <%= request.getServerPort() %> <br>
 </body>

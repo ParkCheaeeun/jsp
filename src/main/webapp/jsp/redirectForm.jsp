@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="<%= request.getContextPath() %>" method="post">
+	<form action="${pageContext.request.contextPath}" method="post">
 		<input type="text" name="userName" value="brown"> <br>
 		<input type="submit" vlaue="전송">
 	</form>
