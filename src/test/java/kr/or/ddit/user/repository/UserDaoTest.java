@@ -23,9 +23,12 @@ public class UserDaoTest {
 
 		/***When***/
 		List<User> userList = userDao.getUserList();
+		List<User> HalfuserList = userDao.getUserHalfList();
+		
 		
 		/***Then***/
-		assertEquals(5, userList.size());
+		assertEquals(105, userList.size());
+		assertEquals(50, HalfuserList.size());
 
 	}
 	
