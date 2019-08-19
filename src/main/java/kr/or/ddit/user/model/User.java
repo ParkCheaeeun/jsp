@@ -11,7 +11,7 @@ public class User {
 	private String userId;
 	private String pass;
 	private String alias;
-	private Date reg_dt;
+	private Date reg_dt_fmt;
 	
 	private static final Logger logger = LoggerFactory.getLogger(User.class);
 	
@@ -22,13 +22,13 @@ public class User {
 	public String getReg_dt() {
 		logger.debug("getReg_dt_fmt method call");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-		String date = sdf.format(reg_dt);
+		String date = sdf.format(reg_dt_fmt);
 		return date;
 	}
 
 	public void setReg_dt(Date reg_dt) {
 		
-		this.reg_dt = reg_dt;
+		this.reg_dt_fmt = reg_dt;
 	}
 
 

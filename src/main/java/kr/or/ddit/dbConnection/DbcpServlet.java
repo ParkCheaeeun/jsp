@@ -34,5 +34,6 @@ public class DbcpServlet extends HttpServlet {
 		ds.setPassword("java");
 		ds.setInitialSize(10);
 		application.setAttribute("ds", ds);
+		application.setAttribute("cp", application.getContextPath());
 	}
 }

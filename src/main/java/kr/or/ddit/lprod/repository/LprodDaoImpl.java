@@ -16,4 +16,6 @@ public class LprodDaoImpl implements ILprodDao {
 		return list;
 	}
 
+	
+
 }

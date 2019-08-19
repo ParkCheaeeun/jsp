@@ -17,12 +17,7 @@
 
 <%@ include file="/commonJsp/basicLib.jsp"%>
 <script type="text/javascript">
-$(document).ready(function(){
-	$('.prodTr').on('click', function(){
-		$('#prod_gu').val($(this).children().filter(':eq(1)').text())
-		$('#frm').submit();
-	})
-})
+
 </script>
 
 </head>
@@ -31,9 +26,6 @@ $(document).ready(function(){
 <!-- header -->
 <%@ include file="/commonJsp/header.jsp" %>
 
-<form action="${cp}/prod" id="frm">
-	<input type="hidden" id="prod_gu" name="prod_gu">
-</form> 
 
 <div class="container-fluid">
 		<div class="row">
@@ -46,21 +38,27 @@ $(document).ready(function(){
 
 <div class="row">
 	<div class="col-sm-8 blog-main">
-		<h2 class="sub-header">사용자</h2>
+		<h2 class="sub-header">상품</h2>
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<tr>
-					<th>상품 아이디</th>
-					<th>상품 번호</th>
+					<th>상품 분류</th>
+					<th>분류 코드</th>
+					<th>제조사 이름</th>
+					<th>상품 코드</th>
 					<th>상품 이름</th>
+					<th>상품 가격</th>
 				</tr>
 				
 
-				<c:forEach items="${lprodList}" var="LprodVo">
+				<c:forEach items="${list}" var="ProdVo">
 					<tr class="prodTr">
-						<td>${LprodVo.lprod_id}</td>
-						<td>${LprodVo.lprod_gu}</td>
-						<td>${LprodVo.lprod_nm}</td>
+						<td>${ProdVo.lprod_nm}</td>
+						<td>${ProdVo.prod_lgu}</td>
+						<td>${ProdVo.buyer_name}</td>
+						<td>${ProdVo.prod_id}</td>
+						<td>${ProdVo.prod_name}</td>
+						<td>${ProdVo.prod_price}</td>
 					</tr>
 				</c:forEach>
 			</table>

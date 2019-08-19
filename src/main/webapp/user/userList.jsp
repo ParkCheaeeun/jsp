@@ -18,10 +18,27 @@
 <title>Jsp</title>
 
 <%@ include file="/commonJsp/basicLib.jsp"%>
-
+<script type="text/javascript">
+$(document).ready(function(){
+	//사용자 정보 클릭시 이벤트 핸들러
+	$(".userTr").on('click', function(){
+		console.log("userTr click")
+		//input태그에 값 설정
+		$('#userId').val($(this).children().first().text());
+		
+		//form태그이용 전송
+		console.log("serialize : " + $('#frm').serialize())
+		
+		$('#frm').submit();
+	})
+})
+</script>
 </head>
 
 <body>
+<form action="${cp }/user" id="frm">
+	<input type="hidden" id="userId" name="userId">
+</form>
 <!-- header -->
 <%@ include file="/commonJsp/header.jsp" %>
 
@@ -59,7 +76,7 @@
 <%-- 				<%} %> --%>
 				<!-- for(User user : userList) -->
 				<c:forEach items="${userList}" var="user">
-					<tr>
+					<tr class="userTr">
 						<td>${user.userId}</td>
 						<td>${user.userName}</td>
 						<td>${user.alias}</td>

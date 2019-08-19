@@ -14,7 +14,7 @@ import kr.or.ddit.lprod.repository.ILprodDao;
 import kr.or.ddit.lprod.repository.LprodDaoImpl;
 
 @WebServlet("/LprodList")
-public class LprodController extends HttpServlet {
+public class LprodListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
