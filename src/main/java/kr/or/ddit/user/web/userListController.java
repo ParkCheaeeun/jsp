@@ -9,11 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.user.model.User;
 import kr.or.ddit.user.repository.UserDao;
+import kr.or.ddit.user.service.UserService;
+import kr.or.ddit.util.mybatis;
 
 /**
  * Servlet implementation class userListController
@@ -30,8 +33,8 @@ public class userListController extends HttpServlet {
 		 *  userList.jsp 통해서 화면 응답 생성하도록 위임
 		 */
 		
-		UserDao userDao = new UserDao();
-		List<User> userList = userDao.getUserList();
+		UserService userService = new UserService();
+		List<User> userList = userService.getUserList();
 		
 		request.setAttribute("userList", userList);
 		

@@ -12,7 +12,7 @@ public class UserDao implements IUserDao{
 	
 	
 	@Override
-	public List<User> getUserList() {
+	public List<User> getUserList(SqlSession sqlSession) {
 		//db에서 조회가 되었다고 가정하고 가짜 객체를 리턴
 //		List<UserVo> userList = new ArrayList<UserVo>();
 //		userList.add(new UserVo("brown"));
@@ -20,12 +20,12 @@ public class UserDao implements IUserDao{
 //		userList.add(new UserVo("cony"));
 //		userList.add(new UserVo("moon"));
 //		userList.add(new UserVo("james"));
-		
-		SqlSession sqlSession = mybatis.getSession();
+		sqlSession = mybatis.getSession();
 		List<User> userList = sqlSession.selectList("user.getUserList");
 		sqlSession.close();
 		
 		return userList;
+		
 	}
 
 	/**
@@ -37,8 +37,8 @@ public class UserDao implements IUserDao{
 	* Method 설명 : userId를 갖는 사용자 조회
 	*/
 	@Override
-	public User getUser(String userId) {
-		SqlSession sqlSession = mybatis.getSession();
+	public User getUser(SqlSession sqlSession, String userId) {
+		sqlSession = mybatis.getSession();
 		User userVo = sqlSession.selectOne("user.getUser", userId);
 		sqlSession.close();
 		
@@ -46,9 +46,9 @@ public class UserDao implements IUserDao{
 	}
 
 	@Override
-	public List<User> getUserHalfList() {
-		SqlSession session = mybatis.getSession();
-		List<User> list = session.selectList("user.getUserListOnlyHalf");
+	public List<User> getUserHalfList(SqlSession sqlSession) {
+		sqlSession = mybatis.getSession();
+		List<User> list = sqlSession.selectList("user.getUserListOnlyHalf");
 		return list;
 	}
 	

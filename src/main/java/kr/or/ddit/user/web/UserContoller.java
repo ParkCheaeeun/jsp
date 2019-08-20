@@ -7,12 +7,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.user.model.User;
 import kr.or.ddit.user.repository.IUserDao;
 import kr.or.ddit.user.repository.UserDao;
+import kr.or.ddit.user.service.IUserService;
+import kr.or.ddit.user.service.UserService;
+import kr.or.ddit.util.mybatis;
 
 /**
  * Servlet implementation class UserContoller
@@ -21,18 +25,18 @@ import kr.or.ddit.user.repository.UserDao;
 public class UserContoller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LoggerFactory.getLogger(UserContoller.class);
-	private IUserDao userDao;
+	private IUserService userService;
 	
 	@Override
 		public void init() throws ServletException {
-			userDao = new UserDao();
+			userService = new UserService();
 		}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId = request.getParameter("userId");
 		logger.debug("userId : {} " + userId);
 		
-		User user = userDao.getUser(userId);
+		User user = userService.getUser(userId);
 		
 		request.setAttribute("user", user);
 		request.getRequestDispatcher("/user/user.jsp").forward(request, response);

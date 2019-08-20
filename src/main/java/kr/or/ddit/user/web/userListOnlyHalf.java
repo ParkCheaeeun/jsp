@@ -9,9 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
+
 import kr.or.ddit.user.model.User;
 import kr.or.ddit.user.repository.IUserDao;
 import kr.or.ddit.user.repository.UserDao;
+import kr.or.ddit.user.service.UserService;
+import kr.or.ddit.util.mybatis;
 
 /**
  * Servlet implementation class userListOnlyHalf
@@ -19,12 +23,11 @@ import kr.or.ddit.user.repository.UserDao;
 @WebServlet("/userListOnlyHalf")
 public class userListOnlyHalf extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
    
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		IUserDao dao = new UserDao();
-		List<User> list = dao.getUserHalfList();
+		UserService userService = new UserService();
+		List<User> list = userService.getUserHalfList();
 		
 		request.setAttribute("userList", list);
 		request.getRequestDispatcher("/user/userListOnlyHalf.jsp").forward(request, response);
