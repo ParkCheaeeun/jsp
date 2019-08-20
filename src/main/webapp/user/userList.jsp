@@ -23,8 +23,24 @@ $(document).ready(function(){
 	//사용자 정보 클릭시 이벤트 핸들러
 	$(".userTr").on('click', function(){
 		console.log("userTr click")
+		
+		// 두번째 자식
+		var tdText = $(this).children().first().text()
+		console.log(tdText)
+		
+		//input 태그에 저장된 값 확인
+		var inputValue = $(this).find("input").val();
+		console.log("inputValue : " + inputValue);
+		
+		//data 속성 값 가져오기
+		//data속성명은 소문자로 치환된다!!
+		//data-userId --> $(this).data("userid");
+		//대소문자 주의~~~~~!
+		var dataValue = $(this).data("userid");
+		console.log("dataValue : " + dataValue);
+		
 		//input태그에 값 설정
-		$('#userId').val($(this).children().first().text());
+		$('#userId').val(dataValue);
 		
 		//form태그이용 전송
 		console.log("serialize : " + $('#frm').serialize())
@@ -76,7 +92,8 @@ $(document).ready(function(){
 <%-- 				<%} %> --%>
 				<!-- for(User user : userList) -->
 				<c:forEach items="${userList}" var="user">
-					<tr class="userTr">
+					<tr class="userTr" data-userId="${user.userId }">
+						<input type="hidden" value="${user.userId }"/>
 						<td>${user.userId}</td>
 						<td>${user.userName}</td>
 						<td>${user.alias}</td>
