@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import kr.or.ddit.common.model.Page;
 import kr.or.ddit.user.model.User;
 import kr.or.ddit.util.mybatis;
 
@@ -20,11 +21,9 @@ public class UserDao implements IUserDao{
 //		userList.add(new UserVo("cony"));
 //		userList.add(new UserVo("moon"));
 //		userList.add(new UserVo("james"));
-		sqlSession = mybatis.getSession();
-		List<User> userList = sqlSession.selectList("user.getUserList");
-		sqlSession.close();
 		
-		return userList;
+		return sqlSession.selectList("user.getUserList");
+
 		
 	}
 
@@ -38,7 +37,6 @@ public class UserDao implements IUserDao{
 	*/
 	@Override
 	public User getUser(SqlSession sqlSession, String userId) {
-		sqlSession = mybatis.getSession();
 		User userVo = sqlSession.selectOne("user.getUser", userId);
 		sqlSession.close();
 		
@@ -47,10 +45,27 @@ public class UserDao implements IUserDao{
 
 	@Override
 	public List<User> getUserHalfList(SqlSession sqlSession) {
-		sqlSession = mybatis.getSession();
 		List<User> list = sqlSession.selectList("user.getUserListOnlyHalf");
 		return list;
 	}
+
+	@Override
+	public List<User> getUserPagingList(SqlSession sqlSession, Page page) {
+		List<User> list = sqlSession.selectList("user.getUserPagingList", page);
+		return list;
+	}
 	
+
+	/**
+	* Method : getUserTotalCount
+	* 작성자 : PC-09
+	* 변경이력 :
+	* @param sqlSession
+	* @return
+	* Method 설명 : 전체 사용자 건수 조회
+	*/
+	public int getUserTotalCount(SqlSession sqlSession) {
+		return sqlSession.selectOne("user.getUserTotalCnt");
+	}
 	
 }

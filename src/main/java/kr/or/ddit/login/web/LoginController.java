@@ -10,14 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.user.model.User;
 import kr.or.ddit.user.service.IUserService;
 import kr.or.ddit.user.service.UserService;
-import kr.or.ddit.util.mybatis;
 
 /**
  * Servlet implementation class LoginController

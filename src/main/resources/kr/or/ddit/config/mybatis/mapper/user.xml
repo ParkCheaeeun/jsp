@@ -19,4 +19,19 @@
   	from users
   	where rownum &lt;= 50
   </select>
+  
+  <select id="getUserPagingList" resultType="user" parameterType="page">
+  	select a.*
+	from
+	   (select rownum rn, a.*
+	    from
+	        (select a.*
+	         from users a
+	         order by userid) a) a
+	where rn between #{pagesize}*(#{page}-1)+1 and #{page} * #{pagesize}
+  </select>
+  
+  <select id="getUserTotalCnt" resultType="Integer">
+  	select count(*) from users
+  </select>
 </mapper>

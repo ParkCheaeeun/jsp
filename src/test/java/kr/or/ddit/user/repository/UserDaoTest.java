@@ -3,6 +3,7 @@ package kr.or.ddit.user.repository;
 import static org.junit.Assert.*;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.junit.After;
@@ -11,13 +12,16 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.or.ddit.common.model.Page;
 import kr.or.ddit.user.model.User;
+import kr.or.ddit.user.service.UserService;
 import kr.or.ddit.util.mybatis;
 
 public class UserDaoTest {
 	private static final Logger logger = LoggerFactory.getLogger(UserDaoTest.class);
 	private IUserDao userDao;
 	private SqlSession sqlsession;
+	private UserService userService;
 	
 	@Before
 	public void setup() {
@@ -28,6 +32,7 @@ public class UserDaoTest {
 		logger.debug("before");
 		userDao = new UserDao();
 		sqlsession = mybatis.getSession();
+		userService = new UserService();
 	}
 	
 	@After
@@ -75,5 +80,49 @@ public class UserDaoTest {
 		assertEquals("brown1234", userVo.getPass());
 		
 	}
+	
+	@Test
+	public void getUserPagingListTest() {
+		/***Given***/
+		Page page = new Page();
+		page.setPage(3);
+		page.setPagesize(10);
 
+		/***When***/
+		Map<String, Object> resultMap = userService.getUserPagingList(page);
+		List<User> userList = (List<User>) resultMap.get("userList");
+		int paginationSize = (Integer) resultMap.get("paginationSize");
+		
+		/***Then***/
+		assertEquals(10, userList.size());
+		assertEquals("xuserid22", userList.get(0).getUserId());
+		assertEquals(11, paginationSize);
+	}
+	
+	@Test
+	public void getUserTotalCountTest() {
+		/***Given***/
+		
+		/***When***/
+		int totalCnt = userDao.getUserTotalCount(sqlsession);
+		
+		/***Then***/
+		assertEquals(105, totalCnt);
+	}
+	
+	@Test
+	public void ceilingTest() {
+		/***Given***/
+		int totalCnt = 105;
+		int pagesize = 10;
+
+		/***When***/
+		double paginationSize = Math.ceil((double) totalCnt/pagesize);
+
+		/***Then***/
+		assertEquals(11, (int)paginationSize);
+
+	}
+	
+	
 }
