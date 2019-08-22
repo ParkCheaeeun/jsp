@@ -8,6 +8,20 @@
  <select id="selectAll" resultType="LprodVo">
 	select * from lprod
  </select>
-
+ 
+ <select id="getLprodPagingList" resultType="LprodVo" parameterType="page">
+  	select a.*
+	from
+	   (select rownum rn, a.*
+	    from
+	        (select a.*
+	         from lprod a
+	         order by lprod_gu) a) a
+	where rn between #{pagesize}*(#{page}-1)+1 and #{page} * #{pagesize}
+  </select>
+ 
+  <select id="getLprodTotalCnt" resultType="Integer">
+  	select count(*) from lprod
+  </select>
  
  </mapper>
