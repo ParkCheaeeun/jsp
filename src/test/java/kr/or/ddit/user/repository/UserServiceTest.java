@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import kr.or.ddit.user.model.User;
 import kr.or.ddit.user.service.IUserService;
+import kr.or.ddit.user.service.UserService;
 
 public class UserServiceTest {
 	private static final Logger logger = LoggerFactory.getLogger(UserDaoTest.class);
@@ -19,6 +20,7 @@ public class UserServiceTest {
 	
 	@Before
 	public void setUp() throws Exception {
+		userService = new UserService();
 	}
 
 	/**
