@@ -124,5 +124,23 @@ public class UserDaoTest {
 
 	}
 	
+	@Test
+	public void userUpdateTest() {
+		/***Given***/
+		User userVO = new User();
+		userVO.setUserId("dsssa");
+		userVO.setUserName("홍길동");
+		userVO.setAlias("가나다");
+		userVO.setAddr1("대흥동");
+		userVO.setAddr2("영민빌딩");
+		userVO.setZipcode("34340");
+
+		/***When***/
+		int updateCnt = userDao.updateUser(sqlsession, userVO);
+
+		/***Then***/
+		assertEquals(updateCnt, 1);
+	}
+	
 	
 }

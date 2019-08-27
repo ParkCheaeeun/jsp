@@ -52,5 +52,23 @@ public class UserServiceTest {
 		assertEquals(105, userList.size());
 		assertEquals(50, HalfuserList.size());
 	}
+	
+	@Test
+	public void updateUserTest() {
+		/***Given***/
+		User userVO = new User();
+		userVO.setUserId("dsssa");
+		userVO.setUserName("홍길동");
+		userVO.setAlias("가나다");
+		userVO.setAddr1("대흥동");
+		userVO.setAddr2("영민빌딩");
+		userVO.setZipcode("34340");
+
+		/***When***/
+		int updateCnt = userService.updateUser(userVO);
+
+		/***Then***/
+		assertEquals(updateCnt, 1);
+	}
 
 }

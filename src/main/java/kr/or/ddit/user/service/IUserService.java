@@ -61,4 +61,6 @@ public interface IUserService {
 	
 	Map<String, Object> getUserPagingList(Page page);
 	
+	int updateUser(User user);
+	
 }

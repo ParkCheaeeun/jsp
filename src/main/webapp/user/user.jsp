@@ -19,6 +19,11 @@
 
 <%@ include file="/commonJsp/basicLib.jsp"%>
 <script type="text/javascript">
+	$(document).ready(function(){
+		$('#modifyBtn').on('click', function(){
+			$('#frm').submit();
+		})
+	})
 
 </script>
 </head>
@@ -28,6 +33,10 @@
 <!-- header -->
 <%@ include file="/commonJsp/header.jsp" %>
 
+<form action="${cp }/modify" id="frm">
+	<input type="hidden" value="${user.userId}" name="userId">
+</form>
+
 <div class="container-fluid">
 		<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">
@@ -35,18 +44,18 @@
 		<%@ include file="/commonJsp/left.jsp" %>
 		</div><div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-			<div class="col-sm-3 col-md-2 sidebar">
-				<ul class="nav nav-sidebar">
-					<li class="active"><a href="#">Main <span class="sr-only">(current)</span></a></li>
-					<li class="active"><a href="#">사용자</a></li>
-				</ul>
-			</div>
-
-
 				<form class="form-horizontal" role="form">
 
 					<div class="form-group">
-						<label for="userNm" class="col-sm-2 control-label">사용자 아이디</label>
+						<label for="userPicture" class="col-sm-2 control-label">사용자 사진 </label>
+						
+						<div class="col-sm-10">
+							<%-- <img alt="" src="/jsp${user.realfilename2}"> --%>
+							<img src="${cp }/userPicture?userId=${user.userId}"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="userId" class="col-sm-2 control-label">사용자 아이디 </label>
 						<div class="col-sm-10">
 							<label class="control-label">${user.userId}</label>
 						</div>
@@ -81,17 +90,12 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="pass" class="col-sm-2 control-label">사용자 수정</label>
+						<label for="pass" class="col-sm-2 control-label"></label>
 						<div class="col-sm-10">
-							<label class="control-label">???</label>
+							<button type="button" id="modifyBtn" class="btn btn-default">사용자 수정</button>
 						</div>
 					</div>
 
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-default">사용자 등록</button>
-						</div>
-					</div>
 				</form>
 			</div>
 		</div>

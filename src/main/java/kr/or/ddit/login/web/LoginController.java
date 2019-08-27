@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import kr.or.ddit.encrypt.kisa.sha256.KISA_SHA256;
 import kr.or.ddit.user.model.User;
 import kr.or.ddit.user.service.IUserService;
 import kr.or.ddit.user.service.UserService;
@@ -55,7 +56,6 @@ public class LoginController extends HttpServlet {
 			cookie.setMaxAge(60*60*24*7); //7일의 유효기간을 갖는 쿠키
 //		response.addCookie(cookie);
 		}
-		 
 		
 		request.getRequestDispatcher("/login/login.jsp").forward(request, response);
 	}
@@ -123,5 +123,7 @@ public class LoginController extends HttpServlet {
 		}
 		response.addCookie(cookie);
 	}
+	
+	
 
 }
