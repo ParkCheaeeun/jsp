@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -80,14 +81,13 @@ $(document).ready(function(){
 					<th>사용자 별명</th>
 					<th>등록일시</th>
 				</tr>
-				
 				<c:forEach items="${userList}" var="user">
 					<tr class="userTr" data-userId="${user.userId }">
 						<input type="hidden" value="${user.userId }"/>
 						<td>${user.userId}</td>
 						<td>${user.userName}</td>
 						<td>${user.alias}</td>
-						<td>${user.reg_dt}</td>
+						<td><fmt:formatDate value="${user.reg_dt}" pattern="yyyy/MM/dd"/></td>
 					</tr>
 				</c:forEach>
 			</table>

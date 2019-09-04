@@ -1,6 +1,5 @@
 package kr.or.ddit.user.model;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.slf4j.Logger;
@@ -41,15 +40,11 @@ public class User {
 		this.realfilename = realfilename;
 	}
 	
-	public String getReg_dt() {
-		logger.debug("getReg_dt_fmt method call");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String date = sdf.format(reg_dt);
-		return date;
+	public Date getReg_dt() {
+		return reg_dt;
 	}
 
 	public void setReg_dt(Date reg_dt) {
-		
 		this.reg_dt = reg_dt;
 	}
 
