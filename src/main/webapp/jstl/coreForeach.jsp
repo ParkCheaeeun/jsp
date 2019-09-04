@@ -3,7 +3,7 @@
 <%@page import="java.util.Map"%>
 <%@page import="kr.or.ddit.user.model.User"%>
 <%@page import="java.util.List"%>
-<%@page import="kr.or.ddit.user.service.UserService"%>
+<%@page import="kr.or.ddit.user.service.UserServiceImpl"%>
 <%@page import="kr.or.ddit.user.service.IUserService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -17,7 +17,7 @@
 <body>
 <h2>coreForeach</h2>
 <%
-	IUserService userService = new UserService();
+	IUserService userService = new UserServiceImpl();
 	List<User> userList = userService.getUserList();
 	pageContext.setAttribute("userList", userList);
 %>

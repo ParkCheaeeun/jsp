@@ -113,11 +113,11 @@ public class ModifyController extends HttpServlet {
 				resp.sendRedirect(req.getContextPath() + "/user?userId=" + userId);
 				
 				if(file.exists() && picture != null) {
-					logger.debug("파일삭제");
+					logger.debug("file.exists() : {}", file.exists());
 					file.delete();
 				}
 				else {
-					logger.debug("파일이 존재하지 않음");
+					logger.debug("file.exists() : {}", file.exists());
 				}
 			}
 			//비정상 : 사용자 수정화면으로 이동
