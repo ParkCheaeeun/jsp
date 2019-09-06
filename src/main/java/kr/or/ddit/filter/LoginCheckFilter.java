@@ -42,8 +42,9 @@ public class LoginCheckFilter implements Filter {
 		//로그인 하지 않은 상황
 		else if(S_USERVO == null) {
 			//로그인 화면으로 이동
-			HttpServletResponse httpResponse = (HttpServletResponse) response;
+			HttpServletResponse httpResponse = (HttpServletResponse)response;
 			httpResponse.sendRedirect("/login");
+			httpResponse.sendRedirect( httpRequest.getContextPath() + "/login");
 		}
 		//로그인한 상황
 		else {

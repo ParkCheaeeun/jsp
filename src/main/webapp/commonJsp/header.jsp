@@ -18,6 +18,7 @@
 				<li><a href="#">Settings</a></li>
 				<li><a href="#">Profile</a></li>
 				<li><a href="#">Help</a></li>
+				<li><a href="${cp }/logout">Logout</a></li>
 				<li><a href="#">el(field) : ${S_USERVO.userName}</a></li>
 			</ul>
 			<form class="navbar-form navbar-right">

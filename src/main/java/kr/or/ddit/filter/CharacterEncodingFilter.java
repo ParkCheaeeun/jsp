@@ -18,10 +18,10 @@ public class CharacterEncodingFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		String encoding = request.getCharacterEncoding();
 		if(encoding == null) {
-			request.setCharacterEncoding("utf-8");
+			/* request.setCharacterEncoding("utf-8"); */
 		}else {
 			if(!encoding.equals("utf-8") && !encoding.equals("UTF-8")) {
-				request.setCharacterEncoding("utf-8");
+				request.setCharacterEncoding("utf-8"); 
 			}
 		}
 		
